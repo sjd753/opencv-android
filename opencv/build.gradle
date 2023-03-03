@@ -127,8 +127,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     sourceSets {
@@ -165,7 +165,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.sjd753'
             artifactId = 'opencv-android'
-            version = '4.5.0'
+            version = '4.5.0.2'
 
             afterEvaluate {
                 from components.release
