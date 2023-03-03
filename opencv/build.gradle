@@ -89,6 +89,7 @@
 
 
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 def openCVersionName = "4.5.0"
 // def openCVersionCode = ((4 * 100 + 5) * 100 + 0) * 10 + 0
@@ -148,7 +149,27 @@ android {
     lint {
         abortOnError false
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.sjd753'
+            artifactId = 'opencv-android'
+            version = '4.5.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
